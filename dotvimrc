@@ -1,0 +1,17 @@
+set nocompatible
+
+syntax on
+
+set autoindent
+set cindent
+set backup
+set backupdir=~/.saves
+set expandtab
+set softtabstop=4
+set tabstop=4
+set shiftwidth=4
+set noerrorbells
+set vb
+set colorcolumn=80
+
+call pathogen#infect()

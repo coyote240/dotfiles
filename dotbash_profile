@@ -1,0 +1,21 @@
+export CLICOLOR=1
+export PATH=$PATH:~/bin
+
+YELLOW=$(tput setaf 136);
+ORANGE=$(tput setaf 166);
+GREEN=$(tput setaf 64);
+BASE2=$(tput setaf 254);
+RESET=$(tput sgr0);
+
+function prompt_char {
+    git branch >/dev/null 2>/dev/null && echo '⤧ ' && return
+    echo '$'
+}
+
+export PS1='\[$ORANGE\]\u\[$RESET\] @ \[$YELLOW\]\h\[$RESET\] in \[$GREEN\]\w\[$RESET\]\n\[$BASE2\]$(prompt_char)\[$RESET\] '
+
+# Extended PYTHONPATH for brew-installed packages
+
+export PYTHONPATH="/usr/local/lib/python2.7/site-packages/:$PYTHONPATH"
+
+[[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
