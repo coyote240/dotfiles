@@ -1,0 +1,19 @@
+set nocompatible
+source $VIMRUNTIME/vimrc_example.vim
+
+colorscheme solarized 
+set background=dark
+set autoindent
+set cindent
+set number
+set backup
+set expandtab
+set softtabstop=4
+set tabstop=4
+set shiftwidth=4
+set guioptions-=T
+set guifont=Menlo:h12
+
+map <C-t> :tabnew<cr>
+map <C-tab> :tabnext<cr>
+map <C-S-tab> :tabprevious<cr>
