@@ -12,6 +12,20 @@ function prompt_char {
     echo '$'
 }
 
+function activate_env {
+
+    HAS_DEACTIVATE=`type -t deactivate`
+
+    if [ -e env/bin/activate ] && [ "${#VIRTUAL_ENV}" -eq 0 ]; then
+        source env/bin/activate;
+    elif [ ! -e env/bin/activate ] && [ "${#HAS_DEACTIVATE}" -ne 0 ]; then
+        deactivate;
+    fi
+
+    unset HAS_DEACTIVATE
+}
+export PROMPT_COMMAND=activate_env
+
 export PS1='\[$ORANGE\]\u\[$RESET\] @ \[$YELLOW\]\h\[$RESET\] in \[$GREEN\]\w\[$RESET\]\n\[$BASE2\]$(prompt_char)\[$RESET\] '
 
 # Extended PYTHONPATH for brew-installed packages
