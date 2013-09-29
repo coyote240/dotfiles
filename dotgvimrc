@@ -2,7 +2,7 @@ set nocompatible
 source $VIMRUNTIME/vimrc_example.vim
 
 colorscheme solarized 
-set background=dark
+set background=light
 set autoindent
 set cindent
 set number

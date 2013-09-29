@@ -1,5 +1,5 @@
 export CLICOLOR=1
-export PATH=$PATH:~/bin
+export PATH=$PATH:~/bin:/usr/games/bin
 
 YELLOW=$(tput setaf 136);
 ORANGE=$(tput setaf 166);
