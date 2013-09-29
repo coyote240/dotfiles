@@ -7,10 +7,26 @@ GREEN=$(tput setaf 64);
 BASE2=$(tput setaf 254);
 RESET=$(tput sgr0);
 
+# Change the prompt character when encountering git repositories
 function prompt_char {
     git branch >/dev/null 2>/dev/null && echo '⤧ ' && return
     echo '$'
 }
+
+# Automatically activate virtualenv when encountered,
+# deactivate on exit
+function activate_env {
+    HAS_DEACTIVATE=`type -t deactivate`
+
+    if [ -e env/bin/activate ] && [ "${#VIRTUAL_ENV}" -eq 0 ]; then
+        source env/bin/activate;
+    elif [ ! -e env/bin/activate ] && [ "${#HAS_DEACTIVATE}" -ne 0 ]; then
+        deactivate;
+    fi
+
+    unset HAS_DEACTIVATE
+}
+export PROMPT_COMMAND=activate_env
 
 export PS1='\[$ORANGE\]\u\[$RESET\] @ \[$YELLOW\]\h\[$RESET\] in \[$GREEN\]\w\[$RESET\]\n\[$BASE2\]$(prompt_char)\[$RESET\] '
 
@@ -19,3 +35,5 @@ export PS1='\[$ORANGE\]\u\[$RESET\] @ \[$YELLOW\]\h\[$RESET\] in \[$GREEN\]\w\[$
 export PYTHONPATH="/usr/local/lib/python2.7/site-packages/:$PYTHONPATH"
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
+alias git=/usr/local/git/bin/git
