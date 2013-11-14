@@ -35,8 +35,3 @@ export PS1='\[$ORANGE\]\u\[$RESET\] @ \[$YELLOW\]\h\[$RESET\] in \[$GREEN\]\w\[$
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
 alias git=/usr/local/git/bin/git
-
-export IRCNICK="signal9"
-export IRCUSER="signal9"
-export IRCNAME="Shamblin"
-export IRCSERVER="chat.freenode.net"
