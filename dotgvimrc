@@ -1,12 +1,11 @@
 set nocompatible
-source $VIMRUNTIME/vimrc_example.vim
+"source $VIMRUNTIME/vimrc_example.vim
 
 colorscheme solarized 
-set background=dark
+set background=light
 set autoindent
 set cindent
 set number
-set backup
 set expandtab
 set softtabstop=4
 set tabstop=4

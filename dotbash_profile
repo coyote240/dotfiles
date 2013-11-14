@@ -1,5 +1,6 @@
 export CLICOLOR=1
-export PATH=$PATH:~/bin
+export PATH=~/bin:/usr/local/bin:$PATH
+export PYTHONPATH="/usr/local/lib/python2.7/site-packages:$PYTHONPATH"
 
 YELLOW=$(tput setaf 136);
 ORANGE=$(tput setaf 166);
@@ -30,10 +31,12 @@ export PROMPT_COMMAND=activate_env
 
 export PS1='\[$ORANGE\]\u\[$RESET\] @ \[$YELLOW\]\h\[$RESET\] in \[$GREEN\]\w\[$RESET\]\n\[$BASE2\]$(prompt_char)\[$RESET\] '
 
-# Extended PYTHONPATH for brew-installed packages
-
-export PYTHONPATH="/usr/local/lib/python2.7/site-packages/:$PYTHONPATH"
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
 alias git=/usr/local/git/bin/git
+
+export IRCNICK="signal9"
+export IRCUSER="signal9"
+export IRCNAME="Shamblin"
+export IRCSERVER="chat.freenode.net"

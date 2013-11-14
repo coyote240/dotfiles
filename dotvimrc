@@ -4,16 +4,25 @@ syntax on
 
 set autoindent
 set cindent
-set backup
 set backupdir=~/.saves
+set noswapfile
 set expandtab
+set smartindent
 set softtabstop=4
 set tabstop=4
 set shiftwidth=4
 set noerrorbells
 set vb
 set colorcolumn=80
+set hlsearch
+
+filetype plugin indent on
+
+autocmd FileType make setlocal noexpandtab
 
 au BufNewFile,BufRead *.json set filetype=javascript
+au BufNewFile,BufRead /usr/local/nginx/conf/* set filetype=nginx
+au BufWritePost *.py call Flake8()
+au BufWritePost *.js :JSHint
 
 call pathogen#infect()
