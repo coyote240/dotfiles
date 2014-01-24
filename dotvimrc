@@ -22,6 +22,7 @@ autocmd FileType make setlocal noexpandtab
 
 au BufNewFile,BufRead *.json set filetype=javascript
 au BufNewFile,BufRead /usr/local/nginx/conf/* set filetype=nginx
+au BufNewFile,BufRead *.md setlocal textwidth=80
 au BufWritePost *.py call Flake8()
 au BufWritePost *.js :JSHint
 
