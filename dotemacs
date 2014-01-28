@@ -1,0 +1,97 @@
+;; Adam Shamblin's .emacs file
+;; January, 2009
+
+; Load Path
+(add-to-list 'load-path "~/.emacs.d/elisp")
+
+
+; UI customizations
+(display-time)
+(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
+(if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
+(if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
+
+; No startup screen!  No bell!
+(setq inhibit-startup-screen t)
+(setq ring-bell-function 'ignore)
+
+; Tramp
+(require 'tramp)
+(setq tramp-default-method "ssh")
+
+(defun set-dark-theme ()
+  (interactive)
+  ;; (global-font-lock-mode 1 t)
+  (set-foreground-color "#E0E0E0")
+  (set-background-color "#3D464F")
+  (set-face-italic-p 'font-lock-comment-face t)
+  (set-face-foreground 'font-lock-comment-face "#979FA7")
+  (set-face-foreground 'font-lock-string-face "#708090")
+  (set-face-foreground 'font-lock-keyword-face "#FFA500"))
+(set-dark-theme)
+
+; Backups
+(setq backup-by-copying t
+      backup-directory-alist '(("." . "~/.backups"))
+      delete-old-versions t
+      kept-new-versions 3
+      kept-old-versions 2
+      version-control t)
+
+; Fullscreen
+(defun fullscreen ()
+  (interactive)
+  (set-frame-parameter nil 'fullscreen
+		       (if (frame-parameter nil 'fullscreen) nil 'fullboth)))
+(global-set-key [f11] 'fullscreen)
+;(fullscreen)
+
+; Autoindent Code in Python Mode
+(add-hook 'python-mode-hook
+	  '(lambda ()
+	     (define-key python-mode-map "\C-m" 'newline-and-indent)))
+
+; Autoindent Code in Lisp Modes, Wrap Lines
+(define-key emacs-lisp-mode-map (kbd "RET") 'newline-and-indent)
+(define-key lisp-mode-map (kbd "RET") 'newline-and-indent)
+(add-hook 'lisp-mode-hook 'turn-on-auto-fill)
+
+; Autoindent Code in HTML Modes
+(add-hook 'html-mode-hook
+	  '(lambda ()
+	     (define-key html-mode-map "\C-m" 'newline-and-indent)))
+
+; Shell Mode Customizations
+(defun n-shell-mode-hook ()
+  "shell-mode customizations"
+  (setq comint-prompt-read-only t)
+  (setq comint-input-sender 'n-shell-simple-send)
+  (define-key shell-mode-map [up] 'comint-previous-input)
+  (define-key shell-mode-map [down] 'comint-next-input))
+
+(defun n-shell-simple-send (proc command)
+  (cond ((string-match "^[ \t]*clear[ \t]*$" command)
+	 (let ((inhibit-read-only t))
+	   (comint-send-string proc "\n")
+	   (erase-buffer)))
+	(t (comint-simple-send proc command))))
+(add-hook 'shell-mode-hook 'n-shell-mode-hook)
+
+; Eshell Mode
+(defun eshell/clear ()
+  "Clear the command buffer, by gawd!"
+  (interactive)
+  (let ((inhibit-read-only t))
+    (erase-buffer)))
+
+; Slime Config
+(setq inferior-lisp-program "/usr/local/bin/sbcl")
+(add-to-list 'load-path "~/Projects/slime")
+(require 'slime-autoloads)
+(slime-setup '(slime-repl slime-banner slime-references))
+
+(add-hook 'slime-mode-hook
+	  (lambda ()
+	    (unless (slime-connected-p)
+	      (save-excursion (slime)))))
+
