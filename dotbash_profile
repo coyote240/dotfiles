@@ -1,6 +1,9 @@
 export CLICOLOR=1
-export PATH=~/bin:/usr/local/bin:$PATH
 export PYTHONPATH="/usr/local/lib/python2.7/site-packages:$PYTHONPATH"
+export GRADLE_HOME=$HOME/bin/gradle
+export ANDROID_PATH=/Applications/Android\ Studio.app/sdk/platform-tools:/Applications/Android\ Studio.app/sdk/tools
+export POSTGRES_PATH=/Applications/Postgres.app/Contents/Versions/9.3/bin
+export PATH=~/bin:/usr/local/bin:$PATH:$GRADLE_HOME/bin:$ANDROID_PATH:$POSTGRES_PATH
 
 YELLOW=$(tput setaf 136);
 ORANGE=$(tput setaf 166);
@@ -8,10 +11,19 @@ GREEN=$(tput setaf 64);
 BASE2=$(tput setaf 254);
 RESET=$(tput sgr0);
 
+if [ -f /usr/local/git/contrib/completion/git-completion.bash ]; then
+    . /usr/local/git/contrib/completion/git-completion.bash
+fi
+
 # Change the prompt character when encountering git repositories
 function prompt_char {
-    git branch >/dev/null 2>/dev/null && echo '⤧ ' && return
-    echo '$'
+    if ! git rev-parse --git-dir > /dev/null 2>&1; then
+        echo '$'
+        return 0
+    fi
+
+    git_branch=$(git branch 2>/dev/null| sed -n '/^\*/s/^\* //p')
+    echo "($git_branch) $"
 }
 
 # Automatically activate virtualenv when encountered,
@@ -28,7 +40,6 @@ function activate_env {
     unset HAS_DEACTIVATE
 }
 export PROMPT_COMMAND=activate_env
-
 export PS1='\[$ORANGE\]\u\[$RESET\] @ \[$YELLOW\]\h\[$RESET\] in \[$GREEN\]\w\[$RESET\]\n\[$BASE2\]$(prompt_char)\[$RESET\] '
 
 
