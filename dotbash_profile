@@ -6,11 +6,11 @@ export ANDROID_PATH=/Applications/Android\ Studio.app/sdk/platform-tools:/Applic
 export POSTGRES_PATH=/Applications/Postgres.app/Contents/Versions/9.3/bin
 export PATH=~/bin:/usr/local/bin:$PATH:$GRADLE_HOME/bin:$ANDROID_PATH:$POSTGRES_PATH
 
-YELLOW=$(tput setaf 136);
-ORANGE=$(tput setaf 166);
-GREEN=$(tput setaf 64);
-BASE2=$(tput setaf 254);
-RESET=$(tput sgr0);
+##################################################
+#
+#   Bash Completion Scripts
+#
+##################################################
 
 if [ -f /usr/local/git/contrib/completion/git-completion.bash ]; then
     . /usr/local/git/contrib/completion/git-completion.bash
@@ -20,7 +20,18 @@ if [ -f /usr/local/etc/bash_completion.d/rabbitmqadmin.bash ]; then
     . /usr/local/etc/bash_completion.d/rabbitmqadmin.bash
 fi
 
-# Change the prompt character when encountering git repositories
+##################################################
+#
+#   Command Prompt Customizations
+#
+##################################################
+
+YELLOW=$(tput setaf 136);
+ORANGE=$(tput setaf 166);
+GREEN=$(tput setaf 64);
+BASE2=$(tput setaf 254);
+RESET=$(tput sgr0);
+
 function prompt_char {
     if ! git rev-parse --git-dir > /dev/null 2>&1; then
         echo '$'
@@ -31,6 +42,12 @@ function prompt_char {
     echo "($git_branch) $"
 }
 export PS1='\[$ORANGE\]\u\[$RESET\] @ \[$YELLOW\]\h\[$RESET\] in \[$GREEN\]\w\[$RESET\]\n\[$BASE2\]$(prompt_char)\[$RESET\] '
+
+##################################################
+#
+#   Python Virtual Environments & Completion
+#
+##################################################
 
 function activate () {
     command source $PYTHON_ENV_PATH/$1/bin/activate
@@ -52,7 +69,19 @@ function _envdir () {
 }
 complete -F _envdir activate
 
+##################################################
+#
+#   Ruby Stuffs
+#
+##################################################
+
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
+##################################################
+#
+#   Aliases
+#
+##################################################
 
 alias git=/usr/local/git/bin/git
 alias preview="open -a Preview"
