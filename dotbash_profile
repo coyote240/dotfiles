@@ -1,6 +1,30 @@
 export CLICOLOR=1
-export PATH=~/bin:/usr/local/bin:~/.rvm/bin:$PATH
 export PYTHONPATH="/usr/local/lib/python2.7/site-packages:$PYTHONPATH"
+export PYTHON_ENV_PATH=$HOME/env
+export GRADLE_HOME=$HOME/bin/gradle
+export ANDROID_PATH=/Applications/Android\ Studio.app/sdk/platform-tools:/Applications/Android\ Studio.app/sdk/tools
+export POSTGRES_PATH=/Applications/Postgres.app/Contents/Versions/9.3/bin
+export PATH=~/bin:/usr/local/bin:$PATH:$GRADLE_HOME/bin:$ANDROID_PATH:$POSTGRES_PATH
+
+##################################################
+#
+#   Bash Completion Scripts
+#
+##################################################
+
+if [ -f /usr/local/git/contrib/completion/git-completion.bash ]; then
+    . /usr/local/git/contrib/completion/git-completion.bash
+fi
+
+if [ -f /usr/local/etc/bash_completion.d/rabbitmqadmin.bash ]; then
+    . /usr/local/etc/bash_completion.d/rabbitmqadmin.bash
+fi
+
+##################################################
+#
+#   Command Prompt Customizations
+#
+##################################################
 
 YELLOW=$(tput setaf 136);
 ORANGE=$(tput setaf 166);
@@ -8,31 +32,56 @@ GREEN=$(tput setaf 64);
 BASE2=$(tput setaf 254);
 RESET=$(tput sgr0);
 
-# Change the prompt character when encountering git repositories
 function prompt_char {
-    git branch >/dev/null 2>/dev/null && echo '⤧ ' && return
-    echo '$'
-}
-
-# Automatically activate virtualenv when encountered,
-# deactivate on exit
-function activate_env {
-    HAS_DEACTIVATE=`type -t deactivate`
-
-    if [ -e env/bin/activate ] && [ "${#VIRTUAL_ENV}" -eq 0 ]; then
-        source env/bin/activate;
-    elif [ ! -e env/bin/activate ] && [ "${#HAS_DEACTIVATE}" -ne 0 ]; then
-        deactivate;
+    if ! git rev-parse --git-dir > /dev/null 2>&1; then
+        echo '$'
+        return 0
     fi
 
-    unset HAS_DEACTIVATE
+    git_branch=$(git branch 2>/dev/null| sed -n '/^\*/s/^\* //p')
+    echo "($git_branch) $"
 }
-export PROMPT_COMMAND=activate_env
-
 export PS1='\[$ORANGE\]\u\[$RESET\] @ \[$YELLOW\]\h\[$RESET\] in \[$GREEN\]\w\[$RESET\]\n\[$BASE2\]$(prompt_char)\[$RESET\] '
 
+##################################################
+#
+#   Python Virtual Environments & Completion
+#
+##################################################
+
+function activate () {
+    command source $PYTHON_ENV_PATH/$1/bin/activate
+}
+
+function _envdir () {
+    IFS='
+    '
+
+    local cur prev opts
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    prev="${COMP_WORDS[COMP_CWORD-1]}"
+
+    opts=`ls $PYTHON_ENV_PATH`
+
+    COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
+    return 0
+}
+complete -F _envdir activate
+
+##################################################
+#
+#   Ruby Stuffs
+#
+##################################################
 
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
+
+##################################################
+#
+#   Aliases
+#
+##################################################
 
 alias git=/usr/local/git/bin/git
 alias preview="open -a Preview"
