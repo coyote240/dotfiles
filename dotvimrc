@@ -27,8 +27,11 @@ autocmd FileType make setlocal noexpandtab
 au BufNewFile,BufRead *.json set filetype=javascript
 au BufNewFile,BufRead Podfile,*.podspec set filetype=ruby
 au BufNewFile,BufRead /usr/local/nginx/conf/* set filetype=nginx
+au BufNewFile,BufRead *.less set filetype=less
 au BufNewFile,BufRead *.md,*.txt setlocal textwidth=80
 au BufWritePost *.py call Flake8()
 au BufWritePost *.js :JSHint
+
+au BufNewFile,BufRead *.dat setlocal noexpandtab
 
 call pathogen#infect()
