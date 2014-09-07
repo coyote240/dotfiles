@@ -5,7 +5,8 @@ export PYTHON_ENV_PATH=$HOME/env
 export GRADLE_HOME=$HOME/bin/gradle
 export ANDROID_PATH=/Applications/Android\ Studio.app/sdk/platform-tools:/Applications/Android\ Studio.app/sdk/tools
 export POSTGRES_PATH=/Applications/Postgres.app/Contents/Versions/9.3/bin
-export PATH=~/bin:/usr/local/bin:$PATH:$GRADLE_HOME/bin:$ANDROID_PATH:$POSTGRES_PATH
+export SCALA_HOME=~/bin/scala
+export PATH=~/bin:/usr/local/bin:$PATH:$GRADLE_HOME/bin:$ANDROID_PATH:$POSTGRES_PATH:$SCALA_HOME/bin
 
 ##################################################
 #
