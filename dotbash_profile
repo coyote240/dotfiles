@@ -83,6 +83,14 @@ complete -F _envdir activate
 
 ##################################################
 #
+#   Scala/Play Stuffs
+#
+##################################################
+
+export JAVA_OPTS="-server -Xms512m -Xmx2048m -XX:PermSize=512M -XX:MaxPermSize=1024M -XX:+CMSClassUnloadingEnabled"
+
+##################################################
+#
 #   Aliases
 #
 ##################################################
