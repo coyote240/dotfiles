@@ -17,13 +17,22 @@ set visualbell
 set vb
 set colorcolumn=80
 set hlsearch
+set switchbuf=usetab
 
 set mouse=a
 set ttymouse=xterm2
 
+set wildignore+=**/node_modules/*,**/target/*
+
+let mapleader=","
+let g:CommandTAcceptSelectionTabMap='<CR>'
+
+map <leader>f :CommandT<cr>
+
+" Setup project/team-specific configurations
 function! SetupEnvironment()
     let l:path = expand('%:p')
-    " MapQuest project-specific configurations
+    " MapQuest
     if l:path =~ '/Users/ashamblin14/workspace'
         if &filetype == "javascript"
             setlocal tabstop=2 softtabstop=2 shiftwidth=2
