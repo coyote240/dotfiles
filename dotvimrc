@@ -22,12 +22,15 @@ set switchbuf=usetab
 set mouse=a
 set ttymouse=xterm2
 
-set wildignore+=**/node_modules/*,**/target/*
+set wildignore+=**/node_modules,**/node_modules/*,**/target,**/target/*
 
 let mapleader=","
 let g:CommandTAcceptSelectionTabMap='<CR>'
+let NERDTreeRespectWildIgnore=1
+let NERDTreeShowHidden=1
 
 map <leader>f :CommandT<cr>
+map <leader>a :NERDTreeToggle<cr>
 
 " Setup project/team-specific configurations
 function! SetupEnvironment()
@@ -35,6 +38,12 @@ function! SetupEnvironment()
     " MapQuest
     if l:path =~ '/Users/ashamblin14/workspace'
         if &filetype == "javascript"
+            setlocal tabstop=2 softtabstop=2 shiftwidth=2
+        endif
+        if &filetype == "less"
+            setlocal tabstop=2 softtabstop=2 shiftwidth=2
+        endif
+        if &filetype == "css"
             setlocal tabstop=2 softtabstop=2 shiftwidth=2
         endif
     endif
