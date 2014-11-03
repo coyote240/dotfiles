@@ -16,8 +16,8 @@
 (setq ring-bell-function 'ignore)
 
 ; Tramp
-(require 'tramp)
-(setq tramp-default-method "ssh")
+;(require 'tramp)
+;(setq tramp-default-method "ssh")
 
 (defun set-dark-theme ()
   (interactive)
@@ -85,13 +85,13 @@
     (erase-buffer)))
 
 ; Slime Config
-(setq inferior-lisp-program "/usr/local/bin/sbcl")
-(add-to-list 'load-path "~/Projects/slime")
-(require 'slime-autoloads)
-(slime-setup '(slime-repl slime-banner slime-references))
+; (setq inferior-lisp-program "/usr/local/bin/sbcl")
+; (add-to-list 'load-path "~/Projects/slime")
+; (require 'slime-autoloads)
+; (slime-setup '(slime-repl slime-banner slime-references))
 
-(add-hook 'slime-mode-hook
-	  (lambda ()
-	    (unless (slime-connected-p)
-	      (save-excursion (slime)))))
+; (add-hook 'slime-mode-hook
+; 	  (lambda ()
+; 	    (unless (slime-connected-p)
+; 	      (save-excursion (slime)))))
 
