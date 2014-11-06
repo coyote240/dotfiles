@@ -32,13 +32,13 @@ set guioptions-=T
 set guifont=Menlo:h12
 
 map <C-t> :tabnew<cr>
-map <C-tab> :tabnext<cr>
-map <C-S-tab> :tabprevious<cr>
+map <C-tab> :bnext<cr>
+map <C-S-tab> :bprevious<cr>
 
 set wildignore+=**/node_modules,**/node_modules/*,**/target,**/target/*
 
 let mapleader=","
-let g:CommandTAcceptSelectionTabMap='<CR>'
+"let g:CommandTAcceptSelectionTabMap='<CR>'
 let NERDTreeRespectWildIgnore=1
 let NERDTreeShowHidden=1
 
