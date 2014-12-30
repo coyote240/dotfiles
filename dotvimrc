@@ -28,6 +28,7 @@ let mapleader=","
 let g:CommandTAcceptSelectionTabMap='<CR>'
 
 map <leader>f :CommandT<cr>
+map <leader>a :NERDTreeToggle<cr>
 
 " Setup project/team-specific configurations
 function! SetupEnvironment()
