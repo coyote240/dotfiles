@@ -4,7 +4,7 @@ export PYTHONPATH="/usr/local/lib/python2.7/site-packages:$PYTHONPATH"
 export PYTHON_ENV_PATH=$HOME/env
 export POSTGRES_PATH=/Applications/Postgres.app/Contents/Versions/9.3/bin
 export ANT_HOME=$HOME"/projects/winston/build-support/apache-ant"
-export PATH=~/bin:/usr/local/bin:$PATH:$POSTGRES_PATH
+export PATH=/usr/local/bin:~/bin:$PATH:$POSTGRES_PATH
 
 ##################################################
 #
@@ -93,10 +93,28 @@ export PATH=$PATH:$SCALA_HOME:$PLAY_PATH
 
 ##################################################
 #
+#   SSH hosts autocomplete
+#
+##################################################
+
+function _ssh_hosts () {
+    local cur prev opts
+    COMPREPLY=()
+    cur="${COMP_WORDS[COMP_CWORD]}"
+    prev="${COMP_WORDS[COMP_CWORD-1]}"
+
+    opts="$(grep '^Host \{1\}[^*]' ~/.ssh/config | awk '{$1="";print}')"
+
+    COMPREPLY=( $(compgen -W "${opts}" -- ${cur}) )
+    return 0
+}
+complete -F _ssh_hosts ssh
+
+##################################################
+#
 #   Aliases
 #
 ##################################################
 
-alias git=/usr/local/git/bin/git
 alias preview="open -a Preview"
 alias jsoncb="pbpaste | python -mjson.tool | gvim -"
