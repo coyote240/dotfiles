@@ -2,11 +2,9 @@ export CLICOLOR=1
 export GREP_COLOR=always
 export PYTHONPATH="/usr/local/lib/python2.7/site-packages:$PYTHONPATH"
 export PYTHON_ENV_PATH=$HOME/env
-export GRADLE_HOME=$HOME/bin/gradle
-export ANDROID_PATH=/Applications/Android\ Studio.app/sdk/platform-tools:/Applications/Android\ Studio.app/sdk/tools
 export POSTGRES_PATH=/Applications/Postgres.app/Contents/Versions/9.3/bin
-export SCALA_HOME=~/bin/scala
-export PATH=~/bin:/usr/local/bin:$PATH:$GRADLE_HOME/bin:$ANDROID_PATH:$POSTGRES_PATH:$SCALA_HOME/bin
+export ANT_HOME=$HOME"/projects/winston/build-support/apache-ant"
+export PATH=~/bin:/usr/local/bin:$PATH:$POSTGRES_PATH
 
 ##################################################
 #
@@ -89,6 +87,10 @@ complete -F _envdir activate
 
 export JAVA_OPTS="-server -Xms512m -Xmx2048m -XX:PermSize=512M -XX:MaxPermSize=1024M -XX:+CMSClassUnloadingEnabled"
 
+export SCALA_HOME=~/bin/scala
+export PLAY_PATH="/usr/local/play"
+export PATH=$PATH:$SCALA_HOME:$PLAY_PATH
+
 ##################################################
 #
 #   Aliases
@@ -97,3 +99,4 @@ export JAVA_OPTS="-server -Xms512m -Xmx2048m -XX:PermSize=512M -XX:MaxPermSize=1
 
 alias git=/usr/local/git/bin/git
 alias preview="open -a Preview"
+alias jsoncb="pbpaste | python -mjson.tool | gvim -"

@@ -97,16 +97,3 @@
 ;; Scala Ensime
 (require 'ensime)
 (add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
-
-
-; Slime Config
-;(setq inferior-lisp-program "/usr/local/bin/sbcl")
-;(add-to-list 'load-path "~/Projects/slime")
-;(require 'slime-autoloads)
-;(slime-setup '(slime-repl slime-banner slime-references))
-
-;(add-hook 'slime-mode-hook
-;	  (lambda ()
-;	    (unless (slime-connected-p)
-;	      (save-excursion (slime)))))
-

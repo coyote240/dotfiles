@@ -1,10 +1,17 @@
 set nocompatible
+call pathogen#infect()
 
 filetype plugin indent on
-syntax on
+
+syntax enable
+set background=dark
+if has('gui_running')
+    colorscheme solarized 
+endif
 
 set autoindent
 set cindent
+set number
 set backupdir=~/.saves
 set noswapfile
 set expandtab
@@ -21,14 +28,24 @@ set switchbuf=usetab
 
 set mouse=a
 set ttymouse=xterm2
+set guioptions-=T
+set guifont=Menlo:h12
 
-set wildignore+=**/node_modules/*,**/target/*
+map <C-t> :tabnew<cr>
+map <C-tab> :bnext<cr>
+map <C-S-tab> :bprevious<cr>
+
+set wildignore+=**/node_modules,**/node_modules/*,**/target,**/target/*
 
 let mapleader=","
-let g:CommandTAcceptSelectionTabMap='<CR>'
+"let g:CommandTAcceptSelectionTabMap='<CR>'
+let NERDTreeRespectWildIgnore=1
+let NERDTreeShowHidden=1
 
 map <leader>f :CommandT<cr>
 map <leader>a :NERDTreeToggle<cr>
+map <leader>b :Gblame<cr>
+map <leader>d :Gdiff<cr>
 
 " Setup project/team-specific configurations
 function! SetupEnvironment()
@@ -36,6 +53,15 @@ function! SetupEnvironment()
     " MapQuest
     if l:path =~ '/Users/ashamblin14/workspace'
         if &filetype == "javascript"
+            setlocal tabstop=2 softtabstop=2 shiftwidth=2
+        endif
+        if &filetype == "less"
+            setlocal tabstop=2 softtabstop=2 shiftwidth=2
+        endif
+        if &filetype == "css"
+            setlocal tabstop=2 softtabstop=2 shiftwidth=2
+        endif
+        if &filetype == "html"
             setlocal tabstop=2 softtabstop=2 shiftwidth=2
         endif
     endif
@@ -56,5 +82,3 @@ au BufNewFile,BufRead *.dat setlocal noexpandtab
 au BufNewFile,BufRead *.jade setlocal noexpandtab
 
 au BufNewFile,BufRead * call SetupEnvironment()
-
-call pathogen#infect()
