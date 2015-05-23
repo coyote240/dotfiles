@@ -85,9 +85,9 @@ complete -F _envdir activate
 #
 ##################################################
 
-export JAVA_OPTS="-server -Xms512m -Xmx2048m -XX:PermSize=512M -XX:MaxPermSize=1024M -XX:+CMSClassUnloadingEnabled"
+export JAVA_OPTS="-server -Xms512m -Xmx2048m -XX:+CMSClassUnloadingEnabled"
 
-export SCALA_HOME=~/bin/scala
+export SCALA_HOME=/usr/local/bin/scala
 export PLAY_PATH="/usr/local/play"
 export PATH=$PATH:$SCALA_HOME:$PLAY_PATH
 
