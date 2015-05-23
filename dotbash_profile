@@ -1,5 +1,6 @@
 export CLICOLOR=1
-export GREP_COLOR=always
+export GREP_OPTIONS="--color=auto"
+export GREP_COLOR="1;36"
 export PYTHONPATH="/usr/local/lib/python2.7/site-packages:$PYTHONPATH"
 export PYTHON_ENV_PATH=$HOME/env
 export POSTGRES_PATH=/Applications/Postgres.app/Contents/Versions/9.3/bin
@@ -39,8 +40,8 @@ function prompt_char {
         return 0
     fi
 
-    git_branch=$(git branch 2>/dev/null| sed -n '/^\*/s/^\* //p')
-    echo "($git_branch) $"
+    local GIT_BRANCH=$(git branch 2>/dev/null| sed -n '/^\*/s/^\* //p')
+    echo "($GIT_BRANCH) $"
 }
 export PS1='\[$ORANGE\]\u\[$RESET\] @ \[$YELLOW\]\h\[$RESET\] in \[$GREEN\]\w\[$RESET\]\n\[$BASE2\]$(prompt_char)\[$RESET\] '
 
@@ -85,11 +86,9 @@ complete -F _envdir activate
 #
 ##################################################
 
-export JAVA_OPTS="-server -Xms512m -Xmx2048m -XX:+CMSClassUnloadingEnabled"
-
 export SCALA_HOME=/usr/local/bin/scala
 export PLAY_PATH="/usr/local/play"
-export PATH=$PATH:$SCALA_HOME:$PLAY_PATH
+export PATH=$PATH:$PLAY_PATH
 
 ##################################################
 #

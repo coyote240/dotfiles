@@ -13,6 +13,7 @@ endif
 set autoindent
 set cindent
 set number
+set ruler
 set backupdir=~/.saves
 set noswapfile
 set expandtab
@@ -24,6 +25,7 @@ set noerrorbells
 set visualbell
 set vb
 set colorcolumn=80
+set cursorline
 set hlsearch
 set switchbuf=usetab
 
@@ -33,10 +35,10 @@ set guioptions-=T
 set guifont=Menlo:h12
 
 map <C-t> :tabnew<cr>
-map <C-tab> :bnext<cr>
-map <C-S-tab> :bprevious<cr>
+map <C-tab> :tabnext<cr>
+map <C-S-tab> :tabprevious<cr>
 
-set wildignore+=**/node_modules,**/node_modules/*,**/target,**/target/*
+set wildignore+=**/node_modules,**/node_modules/*,**/target,**/target/*,coverage/*,*.log,test/output
 
 let mapleader=","
 "let g:CommandTAcceptSelectionTabMap='<CR>'
@@ -47,6 +49,7 @@ map <leader>f :CommandT<cr>
 map <leader>a :NERDTreeToggle<cr>
 map <leader>b :Gblame<cr>
 map <leader>d :Gdiff<cr>
+map <leader>t :tag<cr>
 
 " Setup project/team-specific configurations
 function! SetupEnvironment()
