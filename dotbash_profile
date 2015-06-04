@@ -86,6 +86,7 @@ complete -F _envdir activate
 #
 ##################################################
 
+export SCALA_HOME=/usr/local/bin/scala
 export PLAY_PATH="/usr/local/play"
 export PATH=$PATH:$PLAY_PATH
 
