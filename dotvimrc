@@ -14,6 +14,7 @@ endif
 
 set autoindent
 set cindent
+set foldmethod=manual
 set number
 set ruler
 set backupdir=~/.saves
@@ -71,6 +72,16 @@ function! SetupEnvironment()
     endif
 endfunction
 
+function! RestoreRegister()
+    let @" = s:restore_reg
+    return ''
+endfunction
+
+function! s:Repl()
+    let s:restore_reg = @"
+    return "p@=RestoreRegister()\<cr>"
+endfunction
+
 autocmd FileType make setlocal noexpandtab
 
 au BufNewFile,BufRead *.js set filetype=javascript
@@ -86,3 +97,5 @@ au BufNewFile,BufRead *.dat setlocal noexpandtab
 au BufNewFile,BufRead *.jade setlocal noexpandtab
 
 au BufNewFile,BufRead * call SetupEnvironment()
+
+vmap <silent> <expr> p <sid>Repl()
