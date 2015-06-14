@@ -8,6 +8,8 @@ set background=dark
 if has('gui_running')
     colorscheme solarized 
     set transparency=4
+    set colorcolumn=80
+    set cursorline
 endif
 
 set autoindent
@@ -24,8 +26,6 @@ set shiftwidth=4
 set noerrorbells
 set visualbell
 set vb
-set colorcolumn=80
-set cursorline
 set hlsearch
 set switchbuf=usetab
 
