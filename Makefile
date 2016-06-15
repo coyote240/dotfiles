@@ -9,5 +9,5 @@ build:
 	ln -s $(CURDIR)/dotbash_profile ~/.bash_profile
 	ln -s $(CURDIR)/dotvimrc ~/.vimrc
 	ln -s $(CURDIR)/dotgvimrc ~/.gvimrc
-	mkdir ~/env
-	mkdir ~/.saves
+	mkdir -p ~/env
+	mkdir -p ~/.saves
