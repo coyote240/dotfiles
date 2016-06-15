@@ -117,3 +117,8 @@ complete -F _ssh_hosts ssh
 
 alias preview="open -a Preview"
 alias jsoncb="pbpaste | python -mjson.tool | gvim -"
+
+# Setting PATH for Python 3.5
+# The orginal version is saved in .bash_profile.pysave
+PATH="/Library/Frameworks/Python.framework/Versions/3.5/bin:${PATH}"
+export PATH

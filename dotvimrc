@@ -45,6 +45,7 @@ let mapleader=","
 "let g:CommandTAcceptSelectionTabMap='<CR>'
 let NERDTreeRespectWildIgnore=1
 let NERDTreeShowHidden=1
+let NERDTreeIgnore=['\.pyc$']
 
 map <leader>f :CommandT<cr>
 map <leader>a :NERDTreeToggle<cr>
