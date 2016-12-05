@@ -7,9 +7,12 @@ syntax enable
 set background=dark
 if has('gui_running')
     colorscheme solarized 
-    set transparency=4
     set colorcolumn=80
     set cursorline
+
+    if has('transparency')
+        set transparency=4
+    endif
 endif
 
 set autoindent
@@ -33,7 +36,7 @@ set switchbuf=usetab
 set mouse=a
 set ttymouse=xterm2
 set guioptions-=T
-set guifont=Menlo:h12
+set guifont=Droid\ Sans\ Mono\ 10
 
 map <C-t> :tabnew<cr>
 map <C-tab> :tabnext<cr>
