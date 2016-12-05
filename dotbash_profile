@@ -27,6 +27,7 @@ if [ -f /usr/local/etc/bash_completion.d/git-completion.bash ]; then
     . /usr/local/etc/bash_completion.d/git-completion.bash
 fi
 
+#   RabbitMQ admin
 if [ -f /usr/local/etc/bash_completion.d/rabbitmqadmin.bash ]; then
     . /usr/local/etc/bash_completion.d/rabbitmqadmin.bash
 fi

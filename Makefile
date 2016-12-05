@@ -3,11 +3,11 @@ all: clean build
 clean:
 	rm -rf ~/.bash_profile
 	rm -rf ~/.vimrc
-	rm -rf ~/.gvimrc
+	rm -rf ~/.vim
 
 build:
 	ln -s $(CURDIR)/dotbash_profile ~/.bash_profile
 	ln -s $(CURDIR)/dotvimrc ~/.vimrc
-	ln -s $(CURDIR)/dotgvimrc ~/.gvimrc
+	ln -s $(CURDIR)/dotvim ~/.vim
 	mkdir -p ~/env
 	mkdir -p ~/.saves
