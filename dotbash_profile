@@ -126,7 +126,11 @@ complete -F _ssh_hosts ssh
 #
 ##################################################
 
-alias preview="open -a Preview"
+if ![[ hash pbcopy 2>/dev/null ]]; then
+    alias pbcopy='xsel --clipboard --input'
+    alias pbpaste='xsel --clipboard --output'
+fi
+
 alias jsoncb="pbpaste | python -mjson.tool | gvim -"
 
 # Setting PATH for Python 3.5
