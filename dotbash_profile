@@ -139,3 +139,5 @@ alias jsoncb="pbpaste | python -mjson.tool | gvim -"
 # The orginal version is saved in .bash_profile.pysave
 PATH="/Library/Frameworks/Python.framework/Versions/3.5/bin:${PATH}"
 export PATH
+
+[[ -s "$HOME/.profile" ]] && source "$HOME/.profile"
