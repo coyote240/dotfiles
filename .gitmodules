@@ -16,3 +16,6 @@
 [submodule "dotvim/bundle/jshint.vim"]
 	path = dotvim/bundle/jshint.vim
 	url = https://github.com/walm/jshint.vim.git
+[submodule "dotvim/bundle/typescript-vim"]
+	path = dotvim/bundle/typescript-vim
+	url = https://github.com/leafgarland/typescript-vim.git
