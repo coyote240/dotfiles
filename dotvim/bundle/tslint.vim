@@ -1,0 +1,1 @@
+/home/adam/Projects/tslint.vim

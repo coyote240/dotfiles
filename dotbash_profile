@@ -1,5 +1,4 @@
 export CLICOLOR=1
-export GREP_OPTIONS="--color=auto"
 export GREP_COLOR="1;36"
 export PYTHONPATH="/usr/local/lib/python2.7/site-packages:$PYTHONPATH"
 export PYTHON_ENV_PATH=$HOME/env
@@ -12,6 +11,7 @@ export TERM=xterm-256color
 color_prompt=yes
 
 export SCRUM_DIR=~/Documents/scrum/
+export CHROME_BIN=`which chromium-browser`
 
 ##################################################
 #
@@ -143,6 +143,7 @@ if ![[ hash pbcopy 2>/dev/null ]]; then
 fi
 
 alias jsoncb="pbpaste | python -mjson.tool | gvim -"
+alias grep="grep --color=auto"
 
 # Setting PATH for Python 3.5
 # The orginal version is saved in .bash_profile.pysave
