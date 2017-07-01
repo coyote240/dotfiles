@@ -105,6 +105,15 @@ export PATH=$PATH:$PLAY_PATH
 
 ##################################################
 #
+#   Go Stuffs
+#
+##################################################
+
+export GOPATH=$HOME/Projects/go
+export PATH=$PATH:$(go env GOPATH)/bin
+
+##################################################
+#
 #   SSH hosts autocomplete
 #
 ##################################################
@@ -141,3 +150,8 @@ PATH="/Library/Frameworks/Python.framework/Versions/3.5/bin:${PATH}"
 export PATH
 
 [[ -s "$HOME/.profile" ]] && source "$HOME/.profile"
+
+# Setting PATH for Python 3.6
+# The original version is saved in .bash_profile.pysave
+PATH="/Library/Frameworks/Python.framework/Versions/3.6/bin:${PATH}"
+export PATH
