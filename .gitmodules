@@ -22,3 +22,6 @@
 [submodule "dotvim/bundle/typescript-vim"]
 	path = dotvim/bundle/typescript-vim
 	url = https://github.com/leafgarland/typescript-vim.git
+[submodule "dotvim/bundle/vim-solidity"]
+	path = dotvim/bundle/vim-solidity
+	url = git@github.com:tomlion/vim-solidity.git

@@ -36,7 +36,7 @@ set switchbuf=usetab
 set mouse=a
 set ttymouse=xterm2
 set guioptions-=T
-set guifont=Droid\ Sans\ Mono\ 10
+set guifont=Menlo:h13
 
 map <C-t> :tabnew<cr>
 map <C-tab> :tabnext<cr>
@@ -98,6 +98,7 @@ au BufNewFile,BufRead *.md,*.txt setlocal textwidth=80
 au BufWritePost *.py call Flake8()
 au BufWritePost *.js :JSHint
 au BufWritePost *.ts :TSLint
+au BufWritePost *.go :GoLint
 
 au BufNewFile,BufRead *.dat setlocal noexpandtab
 au BufNewFile,BufRead *.jade setlocal noexpandtab
