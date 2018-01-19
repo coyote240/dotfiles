@@ -24,9 +24,9 @@ set backupdir=~/.saves
 set noswapfile
 set expandtab
 set smartindent
-set softtabstop=4
-set tabstop=4
-set shiftwidth=4
+set softtabstop=2
+set tabstop=2
+set shiftwidth=2
 set noerrorbells
 set visualbell
 set vb
@@ -36,7 +36,7 @@ set switchbuf=usetab
 set mouse=a
 set ttymouse=xterm2
 set guioptions-=T
-set guifont=Menlo:h13
+set guifont=Menlo:h12
 
 map <C-t> :tabnew<cr>
 map <C-tab> :tabnext<cr>
@@ -50,7 +50,10 @@ let NERDTreeRespectWildIgnore=1
 let NERDTreeShowHidden=1
 let NERDTreeIgnore=['\.pyc$', '__pycache__']
 
-map <leader>f :CommandT<cr>
+let g:ale_set_loclist=0
+let g:ale_set_quickfix=1
+
+map <leader>f :CtrlP<cr>
 map <leader>a :NERDTreeToggle<cr>
 map <leader>b :Gblame<cr>
 map <leader>d :Gdiff<cr>
@@ -87,6 +90,7 @@ function! s:Repl()
 endfunction
 
 autocmd FileType make setlocal noexpandtab
+autocmd Filetype python setlocal tabstop=4 softtabstop=4 shiftwidth=4
 
 au BufNewFile,BufRead *.js set filetype=javascript
 au BufNewFile,BufRead *.json set filetype=javascript
@@ -95,10 +99,7 @@ au BufNewFile,BufRead Podfile,*.podspec set filetype=ruby
 au BufNewFile,BufRead /usr/local/nginx/conf/* set filetype=nginx
 au BufNewFile,BufRead *.less set filetype=less
 au BufNewFile,BufRead *.md,*.txt setlocal textwidth=80
-au BufWritePost *.py call Flake8()
-au BufWritePost *.js :JSHint
-au BufWritePost *.ts :TSLint
-au BufWritePost *.go :GoLint
+"au BufWritePost *.py call Flake8()
 
 au BufNewFile,BufRead *.dat setlocal noexpandtab
 au BufNewFile,BufRead *.jade setlocal noexpandtab

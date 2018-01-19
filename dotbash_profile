@@ -1,6 +1,5 @@
 export CLICOLOR=1
 export GREP_COLOR="1;36"
-export PYTHONPATH="/usr/local/lib/python2.7/site-packages:$PYTHONPATH"
 export PYTHON_ENV_PATH=$HOME/env
 export PIP_REQUIRE_VIRTUALENV=true
 export POSTGRES_PATH=/Applications/Postgres.app/Contents/Versions/latest/bin
@@ -114,6 +113,18 @@ export PATH=$PATH:$(go env GOPATH)/bin
 
 ##################################################
 #
+#   Node Stuffs
+#
+##################################################
+
+export NVM_DIR="$HOME/.nvm"
+
+if [ -f /usr/local/opt/nvm/nvm.sh ]; then
+    . /usr/local/opt/nvm/nvm.sh
+fi
+
+##################################################
+#
 #   SSH hosts autocomplete
 #
 ##################################################
@@ -137,25 +148,8 @@ complete -F _ssh_hosts ssh
 #
 ##################################################
 
-if ![[ hash pbcopy 2>/dev/null ]]; then
-    alias pbcopy='xsel --clipboard --input'
-    alias pbpaste='xsel --clipboard --output'
-fi
-
 alias jsoncb="pbpaste | python -mjson.tool | gvim -"
 alias grep="grep --color=auto"
-
-# Setting PATH for Python 3.5
-# The orginal version is saved in .bash_profile.pysave
-PATH="/Library/Frameworks/Python.framework/Versions/3.5/bin:${PATH}"
-export PATH
-
-[[ -s "$HOME/.profile" ]] && source "$HOME/.profile"
-
-# Setting PATH for Python 3.6
-# The original version is saved in .bash_profile.pysave
-PATH="/Library/Frameworks/Python.framework/Versions/3.6/bin:${PATH}"
-export PATH
 
 export PATH="$HOME/.cargo/bin:$PATH"
 export PATH="~/.npm-global/bin:$PATH"
