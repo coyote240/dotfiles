@@ -13,7 +13,3 @@ build:
 	ln -s $(CURDIR)/dotvim ~/.vim
 	mkdir -p ~/env
 	mkdir -p ~/.saves
-	cd $(CURDIR)/dotvim/bundle/command-t/ruby/command-t;\
-		make clean;\
-		ruby extconf.rb;\
-		make
