@@ -24,9 +24,9 @@ set backupdir=~/.saves
 set noswapfile
 set expandtab
 set smartindent
-set softtabstop=4
-set tabstop=4
-set shiftwidth=4
+set softtabstop=2
+set tabstop=2
+set shiftwidth=2
 set noerrorbells
 set visualbell
 set vb
@@ -45,7 +45,6 @@ map <C-S-tab> :tabprevious<cr>
 set wildignore+=**/node_modules,**/node_modules/*,**/target,**/target/*,coverage/*,*.log,test/output
 
 let mapleader=","
-"let g:CommandTAcceptSelectionTabMap='<CR>'
 let NERDTreeRespectWildIgnore=1
 let NERDTreeShowHidden=1
 let NERDTreeIgnore=['\.pyc$', '__pycache__']
@@ -55,26 +54,6 @@ map <leader>a :NERDTreeToggle<cr>
 map <leader>b :Gblame<cr>
 map <leader>d :Gdiff<cr>
 map <leader>t :tag<cr>
-
-" Setup project/team-specific configurations
-function! SetupEnvironment()
-    let l:path = expand('%:p')
-    " MapQuest
-    if l:path =~ '/Users/ashamblin14/workspace'
-        if &filetype == "javascript"
-            setlocal tabstop=2 softtabstop=2 shiftwidth=2
-        endif
-        if &filetype == "less"
-            setlocal tabstop=2 softtabstop=2 shiftwidth=2
-        endif
-        if &filetype == "css"
-            setlocal tabstop=2 softtabstop=2 shiftwidth=2
-        endif
-        if &filetype == "html"
-            setlocal tabstop=2 softtabstop=2 shiftwidth=2
-        endif
-    endif
-endfunction
 
 function! RestoreRegister()
     let @" = s:restore_reg
@@ -102,8 +81,6 @@ au BufWritePost *.go :GoLint
 
 au BufNewFile,BufRead *.dat setlocal noexpandtab
 au BufNewFile,BufRead *.jade setlocal noexpandtab
-
-au BufNewFile,BufRead * call SetupEnvironment()
 
 vmap <silent> <expr> p <sid>Repl()
 
