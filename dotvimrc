@@ -45,7 +45,6 @@ map <C-S-tab> :tabprevious<cr>
 set wildignore+=**/node_modules,**/node_modules/*,**/target,**/target/*,coverage/*,*.log,test/output
 
 let mapleader=","
-"let g:CommandTAcceptSelectionTabMap='<CR>'
 let NERDTreeRespectWildIgnore=1
 let NERDTreeShowHidden=1
 let NERDTreeIgnore=['\.pyc$', '__pycache__']
@@ -98,6 +97,7 @@ au BufNewFile,BufRead *.ts set filetype=typescript
 au BufNewFile,BufRead Podfile,*.podspec set filetype=ruby
 au BufNewFile,BufRead /usr/local/nginx/conf/* set filetype=nginx
 au BufNewFile,BufRead *.less set filetype=less
+au BufNewfile,BufRead Jenkinsfile set filetype=groovy
 au BufNewFile,BufRead *.md,*.txt setlocal textwidth=80
 "au BufWritePost *.py call Flake8()
 
