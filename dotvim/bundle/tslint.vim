@@ -1,1 +1,1 @@
-/home/adam/Projects/tslint.vim
+/Users/adam.shamblin/Projects/tslint.vim
