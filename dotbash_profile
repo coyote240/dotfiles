@@ -3,14 +3,12 @@ export GREP_COLOR="1;36"
 export PYTHON_ENV_PATH=$HOME/env
 export PIP_REQUIRE_VIRTUALENV=true
 export POSTGRES_PATH=/Applications/Postgres.app/Contents/Versions/latest/bin
-export ANT_HOME=$HOME"/projects/winston/build-support/apache-ant"
 export PATH=/usr/local/bin:~/bin:$PATH:$POSTGRES_PATH
 export EDITOR=/usr/bin/vi
 export TERM=xterm-256color
 color_prompt=yes
 
 export SCRUM_DIR=~/Documents/scrum/
-export CHROME_BIN=`which chromium-browser`
 
 ##################################################
 #
@@ -18,19 +16,9 @@ export CHROME_BIN=`which chromium-browser`
 #
 ##################################################
 
-#   Package install
-if [ -f /usr/local/git/contrib/completion/git-completion.bash ]; then
-    . /usr/local/git/contrib/completion/git-completion.bash
-fi
-
 #   Homebrew install
 if [ -f /usr/local/etc/bash_completion.d/git-completion.bash ]; then
     . /usr/local/etc/bash_completion.d/git-completion.bash
-fi
-
-#   RabbitMQ admin
-if [ -f /usr/local/etc/bash_completion.d/rabbitmqadmin.bash ]; then
-    . /usr/local/etc/bash_completion.d/rabbitmqadmin.bash
 fi
 
 ##################################################
@@ -63,7 +51,6 @@ export PS1='\[$ORANGE\]\u\[$RESET\] @ \[$YELLOW\]\h\[$RESET\] in \[$GREEN\]\w\[$
 #
 ##################################################
 
-#export PYTHON_VIRTUALENV="${BLUE}[`basename \"$VIRTUAL_ENV\"`]${RESET} "
 function activate () {
     command source $PYTHON_ENV_PATH/$1/bin/activate
 }
@@ -83,6 +70,10 @@ function _envdir () {
     return 0
 }
 complete -F _envdir activate
+
+# Setting PATH for Python 3.6
+PATH="/Library/Frameworks/Python.framework/Versions/3.6/bin:${PATH}"
+export PATH
 
 ##################################################
 #
@@ -113,6 +104,14 @@ export PATH=$PATH:$(go env GOPATH)/bin
 
 ##################################################
 #
+#   Rust Stuffs
+#
+##################################################
+
+export PATH="$HOME/.cargo/bin:$PATH"
+
+##################################################
+#
 #   Node Stuffs
 #
 ##################################################
@@ -125,9 +124,16 @@ fi
 
 ##################################################
 #
-#   SSH hosts autocomplete
+#   SSH stuffs
 #
 ##################################################
+
+export GPG_TTY=$(tty)
+if [ -f "${HOME}/.gpg-agent-info" ]; then
+  . "${HOME}/.gpg-agent-info"
+  export GPG_AGENT_INFO
+  export SSH_AUTH_SOCK
+fi
 
 function _ssh_hosts () {
     local cur prev opts
@@ -148,8 +154,5 @@ complete -F _ssh_hosts ssh
 #
 ##################################################
 
-alias jsoncb="pbpaste | python -mjson.tool | gvim -"
 alias grep="grep --color=auto"
-
-export PATH="$HOME/.cargo/bin:$PATH"
-export PATH="~/.npm-global/bin:$PATH"
+[[ -s "$HOME/.profile" ]] && source "$HOME/.profile"

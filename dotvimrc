@@ -58,26 +58,6 @@ map <leader>b :Gblame<cr>
 map <leader>d :Gdiff<cr>
 map <leader>t :tag<cr>
 
-" Setup project/team-specific configurations
-function! SetupEnvironment()
-    let l:path = expand('%:p')
-    " MapQuest
-    if l:path =~ '/Users/ashamblin14/workspace'
-        if &filetype == "javascript"
-            setlocal tabstop=2 softtabstop=2 shiftwidth=2
-        endif
-        if &filetype == "less"
-            setlocal tabstop=2 softtabstop=2 shiftwidth=2
-        endif
-        if &filetype == "css"
-            setlocal tabstop=2 softtabstop=2 shiftwidth=2
-        endif
-        if &filetype == "html"
-            setlocal tabstop=2 softtabstop=2 shiftwidth=2
-        endif
-    endif
-endfunction
-
 function! RestoreRegister()
     let @" = s:restore_reg
     return ''
@@ -103,8 +83,6 @@ au BufNewFile,BufRead *.md,*.txt setlocal textwidth=80
 
 au BufNewFile,BufRead *.dat setlocal noexpandtab
 au BufNewFile,BufRead *.jade setlocal noexpandtab
-
-au BufNewFile,BufRead * call SetupEnvironment()
 
 vmap <silent> <expr> p <sid>Repl()
 
