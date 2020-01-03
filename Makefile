@@ -13,3 +13,6 @@ build:
 	ln -s $(CURDIR)/dotvim ~/.vim
 	mkdir -p ~/env
 	mkdir -p ~/.saves
+
+brew:
+	brew bundle

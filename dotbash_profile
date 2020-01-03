@@ -10,6 +10,9 @@ color_prompt=yes
 
 export SCRUM_DIR=~/Documents/scrum/
 
+export PATH=/usr/local/opt/gnu-sed/libexec/gnubin:$PATH
+export PATH=/usr/local/opt/make/libexec/gnubin:$PATH
+
 ##################################################
 #
 #   Bash Completion Scripts
@@ -36,14 +39,14 @@ RESET=$(tput sgr0);
 
 function prompt_char {
     if ! git rev-parse --git-dir > /dev/null 2>&1; then
-        echo '$'
+        echo '𝝺'
         return 0
     fi
 
     local GIT_BRANCH=$(git branch 2>/dev/null| sed -n '/^\*/s/^\* //p')
     echo "($GIT_BRANCH) $"
 }
-export PS1='\[$ORANGE\]\u\[$RESET\] @ \[$YELLOW\]\h\[$RESET\] in \[$GREEN\]\w\[$RESET\]\n\[$BASE2\]$(prompt_char)\[$RESET\] '
+export PS1='\[$ORANGE\]\u\[$RESET\] @ \[$YELLOW\]\h\[$RESET\] in \[$GREEN\]\w\[$RESET\]\n$(prompt_char) '
 
 ##################################################
 #
@@ -92,6 +95,8 @@ export PATH
 export SCALA_HOME=/usr/local/bin/scala
 export PLAY_PATH="/usr/local/play"
 export PATH=$PATH:$PLAY_PATH
+
+export SBT_CREDENTIALS=$HOME/.ivy2/.credentials
 
 ##################################################
 #
@@ -156,3 +161,8 @@ complete -F _ssh_hosts ssh
 
 alias grep="grep --color=auto"
 [[ -s "$HOME/.profile" ]] && source "$HOME/.profile"
+
+export JAVA_11_HOME=$(/usr/libexec/java_home -v11)
+alias java11='export JAVA_HOME=$JAVA_11_HOME'
+
+java11
