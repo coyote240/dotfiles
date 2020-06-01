@@ -77,7 +77,8 @@ au BufNewFile,BufRead Podfile,*.podspec set filetype=ruby
 au BufNewFile,BufRead /usr/local/nginx/conf/* set filetype=nginx
 au BufNewFile,BufRead *.less set filetype=less
 au BufNewfile,BufRead Jenkinsfile set filetype=groovy
-au BufNewFile,BufRead *.md,*.txt setlocal textwidth=80
+au BufNewFile,BufRead *.md,*.txt,*.html setlocal textwidth=80
+au BufNewFile,BufRead *.md,*.txt setlocal nocindent
 au BufWritePost *.py call Flake8()
 
 au BufNewFile,BufRead *.dat setlocal noexpandtab
