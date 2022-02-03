@@ -28,3 +28,6 @@
 [submodule "dotvim/bundle/ctrlp.vim"]
 	path = dotvim/bundle/ctrlp.vim
 	url = git@github.com:ctrlpvim/ctrlp.vim.git
+[submodule "dotvim/bundle/gruvbox"]
+	path = dotvim/bundle/gruvbox
+	url = git@github.com:morhetz/gruvbox.git
