@@ -57,7 +57,7 @@ let g:ale_set_quickfix=1
 
 map <leader>f :CtrlP<cr>
 map <leader>a :NERDTreeToggle<cr>
-map <leader>b :Gblame<cr>
+map <leader>b :Git blame<cr>
 map <leader>d :Gdiff<cr>
 map <leader>t :tag<cr>
 
