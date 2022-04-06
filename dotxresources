@@ -1,0 +1,8 @@
+URxvt.background:   #1D2021
+URxvt.foreground:   #FBF1C7
+URxvt.font:         xft:Liberation Mono:pixelsize=16:antialias=true:autohint=true
+URxvt.scrollBar:    false
+URxvt.saveLines:    65535
+Xft*dpi:            96
+Xft*antialias:      True
+Xft*hinting:        Full

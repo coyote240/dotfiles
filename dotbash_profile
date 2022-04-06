@@ -1,10 +1,10 @@
 ##################################################
 #
-#
+#   Colors
 #
 ##################################################
 
-export TERMINAL=tilix
+export LS_COLORS="${LS_COLORS}:di=01;38;5;24:ex=00;38;5;106:ln=00;38;5;96"
 
 ##################################################
 #
@@ -25,7 +25,6 @@ fi
 
 export CLICOLOR=1
 export GREP_COLOR="1;36"
-export TERM=xterm-256color
 export THEME=gruvbox
 color_prompt=yes
 
@@ -43,7 +42,7 @@ GRUV_BLUE=$(tput setaf 66);
 
 function prompt_char {
     if ! git rev-parse --git-dir > /dev/null 2>&1; then
-        echo '𝝺'
+        echo -e '\u03bb'
         return 0
     fi
 
