@@ -152,11 +152,19 @@ complete -F _ssh_hosts ssh
 
 ##################################################
 #
+#   k8s stuffs
+#
+##################################################
+
+KIND_EXPERIMENTAL_PROVIDER=podman
+
+##################################################
+#
 #   Aliases, etc.
 #
 ##################################################
 
 alias grep="grep --color=auto"
 export EDITOR=/usr/bin/vi
-export PATH=~/bin:/opt/bin:~/bin/app-images:$PATH
+export PATH=~/bin:/opt/bin:$PATH
 . "$HOME/.cargo/env"

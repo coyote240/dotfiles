@@ -6,3 +6,8 @@ URxvt.saveLines:    65535
 Xft*dpi:            96
 Xft*antialias:      True
 Xft*hinting:        Full
+Emacs.menuBar:      off
+Emacs.verticalScrollBars: off
+Emacs.toolBar:      off
+Emacs.background:   #1d2021
+Emacs.foreground:   #fbf1c7

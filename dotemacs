@@ -2,40 +2,30 @@
 ;; January, 2009
 
 ; Load Path
-(add-to-list 'load-path "~/.emacs.d/elisp")
+;(add-to-list 'load-path "~/.emacs.d/elisp")
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes")
 
 ; UI customizations
-(display-time)
-(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
-(if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
-(if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
+;(display-time)
+;(if (fboundp 'tool-bar-mode) (tool-bar-mode -1))
+;(if (fboundp 'scroll-bar-mode) (scroll-bar-mode -1))
+;(if (fboundp 'menu-bar-mode) (menu-bar-mode -1))
 
 ; No startup screen!  No bell!
 (setq inhibit-startup-screen t)
 (setq ring-bell-function 'ignore)
 
-; Tramp
-;(require 'tramp)
-;(setq tramp-default-method "ssh")
 
-(defun set-dark-theme ()
-  (interactive)
-  ;; (global-font-lock-mode 1 t)
-  (set-foreground-color "#E0E0E0")
-  (set-background-color "#3D464F")
-  (set-face-italic-p 'font-lock-comment-face t)
-  (set-face-foreground 'font-lock-comment-face "#979FA7")
-  (set-face-foreground 'font-lock-string-face "#708090")
-  (set-face-foreground 'font-lock-keyword-face "#FFA500"))
-(set-dark-theme)
-
-; Backups
-(setq backup-by-copying t
-      backup-directory-alist '(("." . "~/.backups"))
-      delete-old-versions t
-      kept-new-versions 3
-      kept-old-versions 2
-      version-control t)
+;(defun set-dark-theme ()
+;  (interactive)
+;  ;; (global-font-lock-mode 1 t)
+;  (set-foreground-color "#E0E0E0")
+;  (set-background-color "#3D464F")
+;  (set-face-italic-p 'font-lock-comment-face t)
+;  (set-face-foreground 'font-lock-comment-face "#979FA7")
+;  (set-face-foreground 'font-lock-string-face "#708090")
+;  (set-face-foreground 'font-lock-keyword-face "#FFA500"))
+;(set-dark-theme)
 
 ; Fullscreen
 (defun fullscreen ()
@@ -43,7 +33,6 @@
   (set-frame-parameter nil 'fullscreen
 		       (if (frame-parameter nil 'fullscreen) nil 'fullboth)))
 (global-set-key [f11] 'fullscreen)
-;(fullscreen)
 
 ; Autoindent Code in Python Mode
 (add-hook 'python-mode-hook
@@ -82,18 +71,3 @@
   (interactive)
   (let ((inhibit-read-only t))
     (erase-buffer)))
-
-;; MELPA
-(require 'package)
-(package-initialize)
-(add-to-list 'package-archives
-	     '("melpa" . "http://melpa.milkbox.net/packages/") t)
-
-(when (not package-archive-contents)
-  (package-refresh-contents))
-
-(exec-path-from-shell-initialize)
-
-;; Scala Ensime
-(require 'ensime)
-(add-hook 'scala-mode-hook 'ensime-scala-mode-hook)
