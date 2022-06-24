@@ -47,7 +47,7 @@ function prompt_char {
     fi
 
     local GIT_BRANCH=$(git branch 2>/dev/null| sed -n '/^\*/s/^\* //p')
-    echo "($GIT_BRANCH) $"
+    echo -e "($GIT_BRANCH) \u03bb"
 }
 
 if [[ $THEME == "solarized" ]]; then
